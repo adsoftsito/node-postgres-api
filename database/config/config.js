@@ -1,10 +1,16 @@
 require('dotenv').config()
+const fs = require("fs");
 
 module.exports =
 {
   "development": {
     "url": process.env.DEV_DATABASE_URL,
-    "dialect": "postgres"
+    "dialect": "postgres",
+    ssl: {
+      require: true,	    
+      rejectUnauthorized: false,  
+      ca: fs.readFileSync('./ca.pem').toString(),
+    },
   },
   "test": {
     "url": process.env.TEST_DATABASE_URL,
