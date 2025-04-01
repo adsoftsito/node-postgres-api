@@ -18,7 +18,7 @@ jobs:
       - run: echo 'DEV_DATABASE_URL=${{secrets.PG_CONN}}'  >> .env
       - run: cat .env
       - run: touch ca.pem
-      - run: echo ${{secrets.CA_PEM}}  >> ca.pem
+      - run: echo '${{secrets.CA_PEM}}' >> ca.pem
       - run: cat ca.pem
       - run: ls  -la
       
